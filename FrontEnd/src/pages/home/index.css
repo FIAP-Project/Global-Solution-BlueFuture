@@ -30,6 +30,7 @@ header h1 {
 
 header p {
     font-size: 1.5rem;
+    max-width: 700px;
     margin: 24px 0 64px 0;
 }
 
@@ -87,4 +88,39 @@ nav ul li .line {
     height: 25px;
     background-color: white;
     margin: 0 10px;
+}
+
+/* main */
+main h2 {
+    font-size: 4.5rem;
+    font-weight: bold;
+}
+
+main h3 {
+    font-size: 2.5rem;
+}
+
+/* Problem Section */
+.problem-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    padding: 0px 120px;
+    margin: 120px 0;
+}
+
+.problem-section h2 {
+    margin-bottom: 24px;
+}
+
+.problem-section p {
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.problem-section img {
+    width: 816px;
+    height: 600px;
+    border-radius: 15px;
 }
