@@ -60,16 +60,15 @@ nav {
     top: 0;
     width: 100%;
     padding: 35px 0;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
 }
 
 nav ul {
     display: flex;
     justify-content: center;
+    gap: 15px;
     list-style: none;
-}
-
-nav ul li {
-    margin: 0 7px;
 }
 
 nav ul li a {
@@ -87,7 +86,6 @@ nav ul li .line {
     width: 2px;
     height: 25px;
     background-color: white;
-    margin: 0 10px;
 }
 
 /* main */
