@@ -395,6 +395,7 @@ main h3 {
 }
 
 .faq .card {
+    border: 3px solid #F8F8F8;
     border-radius: 10px;
     overflow: hidden;
 }
