@@ -116,12 +116,13 @@ main h3 {
 
 .problem-section p {
     font-size: 1.5rem;
+    max-width: 816px;
     color: #666;
 }
 
 .carousel {
     position: relative;
-    width: 1200px;
+    width: 50%;
     height: 600px;
     border-radius: 50px;
     overflow: hidden;
@@ -219,4 +220,46 @@ main h3 {
 
 .technology p {
     color: black;
+}
+
+/* Goals Section */
+.goals-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    padding: 0px 120px;
+    margin: 120px 0;
+}
+
+.goals-div {
+    max-width: 50%;
+}
+
+.goals {
+    display: flex;
+    gap: 24px;
+    margin: 24px 0;
+}
+
+.goal {
+    font-size: 1.5rem;
+}
+
+.participe-btn {
+    background-color: transparent;
+    border: 4px solid black;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 24px 0;
+    width: 100%;
+    margin-top: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.participe-btn:hover {
+    background-color: #0056b3;
+    color: white;
 }
