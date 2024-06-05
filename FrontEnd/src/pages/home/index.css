@@ -445,3 +445,46 @@ main h3 {
         max-height: 100px; /* adjust as needed */
     }
 }
+
+/* Footer Section */
+footer {
+    position: relative;
+    background: url('/FrontEnd/public/assets/images/blue_background.jpg') no-repeat center center/cover;
+    padding: 120px 120px 0 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 41px;
+    margin-bottom: 50px;
+}
+
+.social-media img {
+    width: 100px;
+}
+
+.other-sections {
+    display: flex;
+    justify-content: center;
+    gap: 41px;
+}
+
+.other-sections a {
+    color: white;
+    font-size: 2.5rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer p {
+    font-size: 2.5rem;
+    color: white;
+    margin-top: 84px;
+    margin-bottom: 20px;
+}
