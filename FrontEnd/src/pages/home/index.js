@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function showSlide(index) {
             if (index >= slides.length)
                 currentSlide = 0;
-            
+
             else if (index < 0)
                 currentSlide = slides.length - 1;
             else
@@ -33,3 +33,23 @@ document.addEventListener('DOMContentLoaded', () => {
         showSlide(currentSlide);
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const questions = document.querySelectorAll('.question');
+
+    questions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = question.nextElementSibling;
+            const toggleSign = question.querySelector('.toggle-sign');
+
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                toggleSign.textContent = '+';
+            } else {
+                answer.style.display = 'block';
+                toggleSign.textContent = '−';
+            }
+        });
+    });
+});
+
