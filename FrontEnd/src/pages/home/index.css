@@ -355,3 +355,25 @@ main h3 {
     margin-top: 12px;
     font-size: 1.5rem;
 }
+
+/* Daily Impact Section */
+.daily-impact-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    position: relative;
+    background: url('/FrontEnd/public/assets/images/blue_background.jpg') no-repeat center center/cover;
+    padding: 120px;
+}
+
+.daily-impact-section h2 {
+    color: white;
+    margin-bottom: 24px;
+}
+
+.daily-impact-section p {
+    color: #99c2dc;
+    font-size: 1.5rem;
+    max-width: 835px;
+}
