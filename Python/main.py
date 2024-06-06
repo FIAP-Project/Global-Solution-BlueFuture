@@ -1,5 +1,8 @@
 import random
+
 from time import sleep
+
+import matplotlib.pyplot as plt
 
 foto_com_microplastico: str = "Com Microplásticos"
 foto_sem_microplastico: str = "Sem Microplástico"
@@ -23,6 +26,7 @@ def main():
             print('Nenhum microplástico encontrado')
 
     print(coord_para_qtd_microplastico)
+    criar_grafico(coord_para_qtd_microplastico)
 
 
 def pegar_coordenadas() -> list:
@@ -143,6 +147,22 @@ def numero_inteiro_valido(num_str: str) -> bool:
     except ValueError:
         print_vermelho('Erro, digite novamente sem letras e um numero inteiro (1, 2, 3)...')
         return False
+
+
+def criar_grafico(coord_para_qtd_microplastico: dict):
+    coordenadas = list(coord_para_qtd_microplastico.keys())
+    porcentagens = list(coord_para_qtd_microplastico.values())
+
+    labels: list = [f"({x}, {y})" for x, y in coordenadas]
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(labels, porcentagens, color='skyblue')
+
+    plt.xlabel('Coordenadas (x, y)')
+    plt.ylabel('Porcentagem de microplásticos')
+    plt.title('Microplásticos distribuídos por area')
+
+    plt.show()
 
 
 if __name__ == "__main__":
