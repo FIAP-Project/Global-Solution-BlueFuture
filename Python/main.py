@@ -86,7 +86,7 @@ def pegar_mais_coordenadas() -> bool:
 
 def pegar_raio_de_analise() -> int:
     while True:
-        raio: str = input("Digite o raio de analise do drone: ")
+        raio: str = input("Digite o raio de analise do drone em metros: ")
 
         if numero_inteiro_valido(raio):
             print()
