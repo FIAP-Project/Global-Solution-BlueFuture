@@ -149,7 +149,7 @@ def numero_inteiro_valido(num_str: str) -> bool:
         return False
 
 
-def criar_grafico(coord_para_qtd_microplastico: dict):
+def criar_grafico(coord_para_qtd_microplastico: dict) -> None:
     coordenadas = list(coord_para_qtd_microplastico.keys())
     porcentagens = list(coord_para_qtd_microplastico.values())
 
