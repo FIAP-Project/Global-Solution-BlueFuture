@@ -105,7 +105,6 @@ def ir_ate_coordenada(coordenada: tuple) -> None:
 def fazer_varredura(raio: int) -> str:
     print(f'Fazendo varredura num raio de {raio} metros...')
     foto: str = tirar_fotos(10 * (2 * (raio // 10)) if raio >= 10 else 20)
-    sleep(5)
     print_verde('Varredura completa com sucesso')
     print()
     return foto
