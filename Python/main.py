@@ -15,8 +15,7 @@ def main():
     coord_para_qtd_microplastico: dict = {}
     for coordenada in coordenadas:
         ir_ate_coordenada(coordenada)
-        fazer_varredura(raio)
-        foto: str = tirar_fotos(10)
+        foto: str = fazer_varredura(raio)
 
         if foto == foto_com_microplastico:
             print('Microplastico detectado')
@@ -102,18 +101,19 @@ def ir_ate_coordenada(coordenada: tuple) -> None:
     print()
 
 
-def fazer_varredura(raio: int) -> None:
+def fazer_varredura(raio: int) -> str:
     print(f'Fazendo varredura num raio de {raio} metros...')
+    foto: str = tirar_fotos(10)
     sleep(5)
     print_verde('Varredura completa com sucesso')
     print()
+    return foto
 
 
 def tirar_fotos(qtd: int) -> str:
     print(f'Tirando {qtd} fotos...')
     sleep(5)
     print_verde('Fotos tiradas com sucesso')
-    print()
     return foto_sem_microplastico if random.randint(0, 1) == 0 else foto_com_microplastico
 
 
