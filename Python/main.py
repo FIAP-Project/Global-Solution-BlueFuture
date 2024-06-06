@@ -38,7 +38,13 @@ def pegar_coordenadas() -> list:
         coord_z: float = pegar_coordenada('z')
 
         coordenada: tuple = (coord_x, coord_z)
-        coordenadas.append(coordenada)
+
+        if coordenadas.__contains__(coordenada):
+            print_vermelho('Coordenada já registrada. Por favor insira uma nova.')
+            continue
+        else:
+            coordenadas.append(coordenada)
+
         print_verde('Coordenada registrada com sucesso!')
         print()
 
