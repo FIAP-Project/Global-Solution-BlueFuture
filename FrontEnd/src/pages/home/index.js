@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const questions = document.querySelectorAll('.question');
 
     questions.forEach(question => {
-        question.addEventListener('click', function() {
+        question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
             const toggleSign = question.querySelector('.toggle-sign');
 
@@ -53,3 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+const saibaMaisBtn = document.querySelector('#saiba-mais-btn')
+
+saibaMaisBtn.addEventListener('click', () => {
+    alert('Página de saiba mais não implementada ainda')
+})
