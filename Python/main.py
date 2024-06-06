@@ -6,35 +6,34 @@ foto_sem_microplastico: str = "Sem Microplástico"
 
 
 def main():
-    coordenadas = pegar_coordenadas()
-    raio = pegar_raio_de_analise()
+    coordenadas: list = pegar_coordenadas()
+    raio: int = pegar_raio_de_analise()
 
-    coord_para_qtd_microplastico = {}
+    coord_para_qtd_microplastico: dict = {}
     for coordenada in coordenadas:
         ir_ate_coordenada(coordenada)
         fazer_varredura(raio)
-        foto = tirar_fotos(10)
+        foto: str = tirar_fotos(10)
 
         if foto == foto_com_microplastico:
             print('Microplastico detectado')
-            print()
-            amostra = coletar_amostra()
+            amostra: str = coletar_amostra()
             coord_para_qtd_microplastico[coordenada] = pegar_porcentagem_de_microplastico(amostra)
         else:
-            print('Nenhum microplástico econtrado')
+            print('Nenhum microplástico encontrado')
 
     print(coord_para_qtd_microplastico)
 
 
-def pegar_coordenadas():
-    coordenadas = []
+def pegar_coordenadas() -> list:
+    coordenadas: list = []
 
     print('Digite a coordenada desejada: [X,Z]')
     while True:
-        coordX = pegar_coordenada('x')
-        coordZ = pegar_coordenada('z')
+        coord_x: float = pegar_coordenada('x')
+        coord_z: float = pegar_coordenada('z')
 
-        coordenada = (coordX, coordZ)
+        coordenada: tuple = (coord_x, coord_z)
         coordenadas.append(coordenada)
         print_verde('Coordenada registrada com sucesso!')
         print()
@@ -47,9 +46,9 @@ def pegar_coordenadas():
     return coordenadas
 
 
-def pegar_coordenada(xz: str):
+def pegar_coordenada(xz: str) -> float:
     while True:
-        coord = input(f'{xz}: ')
+        coord: str = input(f'{xz}: ')
 
         if coordenada_valida(coord):
             return float(coord)
@@ -57,19 +56,18 @@ def pegar_coordenada(xz: str):
             continue
 
 
-def coordenada_valida(numstr: str):
+def coordenada_valida(num_str: str) -> bool:
     try:
-        float(numstr)
+        float(num_str)
         return True
     except ValueError:
         print_vermelho('Erro, digite novamente sem letras e com ponto (.) ao invés de vírgula (,)...')
         return False
 
 
-def pegar_mais_coordenadas():
+def pegar_mais_coordenadas() -> bool:
     while True:
-        resposta = input('Deseja registrar mais um ponto de coordenada? [S/N]').strip()
-        print()
+        resposta: str = input('Deseja registrar mais um ponto de coordenada? [S/N]').strip()
 
         if resposta in 'Ss':
             return True
@@ -82,33 +80,32 @@ def pegar_mais_coordenadas():
     return False
 
 
-def pegar_raio_de_analise():
+def pegar_raio_de_analise() -> int:
     while True:
-        raio = input("Digite o raio de analise do drone: ")
-        print()
+        raio: str = input("Digite o raio de analise do drone: ")
 
         if numero_inteiro_valido(raio):
+            print()
             return int(raio)
         else:
             continue
-    return 0
 
 
-def ir_ate_coordenada(coordenada):
+def ir_ate_coordenada(coordenada: tuple) -> None:
     print(f'Indo até a coordenada {coordenada}...')
     sleep(5)
     print_verde('Coordenada alcançada com sucesso')
     print()
 
 
-def fazer_varredura(raio):
+def fazer_varredura(raio: int) -> None:
     print(f'Fazendo varredura num raio de {raio} metros...')
     sleep(5)
     print_verde('Varredura completa com sucesso')
     print()
 
 
-def tirar_fotos(qtd: int):
+def tirar_fotos(qtd: int) -> str:
     print(f'Tirando {qtd} fotos...')
     sleep(5)
     print_verde('Fotos tiradas com sucesso')
@@ -116,7 +113,7 @@ def tirar_fotos(qtd: int):
     return foto_sem_microplastico if random.randint(0, 1) == 0 else foto_com_microplastico
 
 
-def coletar_amostra():
+def coletar_amostra() -> str:
     print('Coletando amostra')
     sleep(5)
     print_verde("Amostra coletada com sucesso")
@@ -124,7 +121,7 @@ def coletar_amostra():
     return foto_com_microplastico
 
 
-def pegar_porcentagem_de_microplastico(amostra):
+def pegar_porcentagem_de_microplastico(amostra: str) -> float:
     if amostra == foto_sem_microplastico:
         return 0
 
@@ -139,9 +136,9 @@ def print_vermelho(arg):
     print(f'\033[31m{arg}\033[m')
 
 
-def numero_inteiro_valido(numstr: str):
+def numero_inteiro_valido(num_str: str) -> bool:
     try:
-        int(numstr)
+        int(num_str)
         return True
     except ValueError:
         print_vermelho('Erro, digite novamente sem letras e um numero inteiro (1, 2, 3)...')
