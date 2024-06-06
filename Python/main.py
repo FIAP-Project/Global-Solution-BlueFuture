@@ -79,7 +79,9 @@ def pegar_mais_coordenadas() -> bool:
     while True:
         resposta: str = input('Deseja registrar mais um ponto de coordenada? [S/N]').strip()
 
-        if resposta in 'Ss':
+        if resposta == '':
+            continue
+        elif resposta in 'Ss':
             return True
         elif resposta in 'Nn':
             break
