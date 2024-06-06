@@ -15,8 +15,7 @@ def main():
     coord_para_qtd_microplastico: dict = {}
     for coordenada in coordenadas:
         ir_ate_coordenada(coordenada)
-        fazer_varredura(raio)
-        foto: str = tirar_fotos(10)
+        foto: str = fazer_varredura(raio)
 
         if foto == foto_com_microplastico:
             print('Microplastico detectado')
@@ -25,8 +24,9 @@ def main():
         else:
             print('Nenhum microplástico encontrado')
 
-    print(coord_para_qtd_microplastico)
-    criar_grafico(coord_para_qtd_microplastico)
+    if len(coord_para_qtd_microplastico) > 0:
+        print(coord_para_qtd_microplastico)
+        criar_grafico(coord_para_qtd_microplastico)
 
 
 def pegar_coordenadas() -> list:
@@ -38,7 +38,13 @@ def pegar_coordenadas() -> list:
         coord_z: float = pegar_coordenada('z')
 
         coordenada: tuple = (coord_x, coord_z)
-        coordenadas.append(coordenada)
+
+        if coordenadas.__contains__(coordenada):
+            print_vermelho('Coordenada já registrada. Por favor insira uma nova.')
+            continue
+        else:
+            coordenadas.append(coordenada)
+
         print_verde('Coordenada registrada com sucesso!')
         print()
 
@@ -73,7 +79,9 @@ def pegar_mais_coordenadas() -> bool:
     while True:
         resposta: str = input('Deseja registrar mais um ponto de coordenada? [S/N]').strip()
 
-        if resposta in 'Ss':
+        if resposta == '':
+            continue
+        elif resposta in 'Ss':
             return True
         elif resposta in 'Nn':
             break
@@ -86,7 +94,7 @@ def pegar_mais_coordenadas() -> bool:
 
 def pegar_raio_de_analise() -> int:
     while True:
-        raio: str = input("Digite o raio de analise do drone: ")
+        raio: str = input("Digite o raio de analise do drone em metros: ")
 
         if numero_inteiro_valido(raio):
             print()
@@ -102,18 +110,18 @@ def ir_ate_coordenada(coordenada: tuple) -> None:
     print()
 
 
-def fazer_varredura(raio: int) -> None:
+def fazer_varredura(raio: int) -> str:
     print(f'Fazendo varredura num raio de {raio} metros...')
-    sleep(5)
+    foto: str = tirar_fotos(10 * (2 * (raio // 10)) if raio >= 10 else 20)
     print_verde('Varredura completa com sucesso')
     print()
+    return foto
 
 
 def tirar_fotos(qtd: int) -> str:
     print(f'Tirando {qtd} fotos...')
     sleep(5)
     print_verde('Fotos tiradas com sucesso')
-    print()
     return foto_sem_microplastico if random.randint(0, 1) == 0 else foto_com_microplastico
 
 
@@ -126,10 +134,13 @@ def coletar_amostra() -> str:
 
 
 def pegar_porcentagem_de_microplastico(amostra: str) -> float:
+    print('Analisando amostra...')
     if amostra == foto_sem_microplastico:
         return 0
 
-    return float(str(f'{random.uniform(0, 95):.2f}'))
+    print_verde('Amostra analisada com sucesso')
+    print()
+    return float(str(f'{random.uniform(5, 95):.2f}'))
 
 
 def print_verde(arg):
