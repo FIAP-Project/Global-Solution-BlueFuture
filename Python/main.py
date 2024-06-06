@@ -127,9 +127,12 @@ def coletar_amostra() -> str:
 
 
 def pegar_porcentagem_de_microplastico(amostra: str) -> float:
+    print('Analisando amostra...')
     if amostra == foto_sem_microplastico:
         return 0
 
+    print_verde('Amostra analisada com sucesso')
+    print()
     return float(str(f'{random.uniform(0, 95):.2f}'))
 
 
