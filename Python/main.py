@@ -24,8 +24,9 @@ def main():
         else:
             print('Nenhum microplástico encontrado')
 
-    print(coord_para_qtd_microplastico)
-    criar_grafico(coord_para_qtd_microplastico)
+    if len(coord_para_qtd_microplastico) > 0:
+        print(coord_para_qtd_microplastico)
+        criar_grafico(coord_para_qtd_microplastico)
 
 
 def pegar_coordenadas() -> list:
