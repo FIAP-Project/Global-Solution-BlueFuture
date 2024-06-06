@@ -132,7 +132,7 @@ def pegar_porcentagem_de_microplastico(amostra: str) -> float:
 
     print_verde('Amostra analisada com sucesso')
     print()
-    return float(str(f'{random.uniform(0, 95):.2f}'))
+    return float(str(f'{random.uniform(5, 95):.2f}'))
 
 
 def print_verde(arg):
