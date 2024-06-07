@@ -5,6 +5,8 @@ from time import sleep
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import matplotlib.cm as cm
+import mplcursors
+import numpy as np
 
 foto_com_microplastico: str = "Com Microplásticos"
 foto_sem_microplastico: str = "Sem Microplástico"
@@ -131,7 +133,7 @@ def tirar_fotos(qtd: int) -> str:
     print(f'Tirando {qtd} fotos...')
     sleep(5)
     print_verde('Fotos tiradas com sucesso')
-    return foto_sem_microplastico if random.randint(0, 1) == 0 else foto_com_microplastico
+    return foto_com_microplastico
 
 
 def coletar_amostra() -> str:
@@ -171,17 +173,39 @@ def numero_inteiro_valido(num_str: str) -> bool:
 
 def criar_grafico(coord_para_qtd_microplastico: dict, raio_de_analise, tamanho_maximo=1000) -> None:
     fig, ax = plt.subplots(figsize=(10, 10))
-    ax.set_facecolor('blue')
+    ax.set_facecolor((0, 0, 0.5))
 
     ax.set_xlim(0, tamanho_maximo)
     ax.set_ylim(0, tamanho_maximo)
 
+    ax.set_xticks(np.arange(0, tamanho_maximo + 1, 100))
+    ax.set_yticks(np.arange(0, tamanho_maximo + 1, 100))
+
     ax.set_aspect('equal')
 
+    colors = [
+        (0, 0, 0.5),  # Dark blue
+        (0, 0, 1),  # Blue
+        (0, 1, 1),  # Cyan
+        (0.5, 1, 0.5),  # Light green
+        (1, 1, 0),  # Yellow
+        (1, 0.5, 0),  # Orange
+        (1, 0, 0),  # Red
+        (0.5, 0, 0)  # Dark red
+    ]
+    n_bins = 100
+    cmap_name = 'custom_heatmap'
+    colormap = mcolors.LinearSegmentedColormap.from_list(cmap_name, colors, N=n_bins)
+
     norm = mcolors.Normalize(vmin=0, vmax=100)
-    colormap = plt.cm.RdYlBu_r
 
     raio_circulo = raio_de_analise
+
+    scatter = ax.scatter(
+        [coord[0] for coord in coord_para_qtd_microplastico.keys()],
+        [coord[1] for coord in coord_para_qtd_microplastico.keys()],
+        c=coord_para_qtd_microplastico.values(), cmap=colormap, norm=norm, edgecolor='r'
+    )
 
     for (x, z), porcentagem in coord_para_qtd_microplastico.items():
         cor = colormap(norm(porcentagem))
@@ -189,9 +213,17 @@ def criar_grafico(coord_para_qtd_microplastico: dict, raio_de_analise, tamanho_m
         circle = plt.Circle((x, z), raio_circulo, color=cor, alpha=0.75)
         ax.add_artist(circle)
 
-    sm = cm.ScalarMappable(cmap=colormap, norm=norm)
-    cbar = plt.colorbar(sm, ax=ax)
+    cbar = plt.colorbar(scatter, ax=ax)
     cbar.set_label('Porcentagem de microplástico')
+    cbar.set_ticks(np.arange(0, 101, 10))
+
+    cursor = mplcursors.cursor(scatter, hover=mplcursors.HoverMode.Transient)
+
+    @cursor.connect("add")
+    def on_add(sel):
+        x, y = sel.target
+        percentage = list(coord_para_qtd_microplastico.values())[sel.index]
+        sel.annotation.set_text(f'({x:.2f}, {y:.2f}), {percentage:.2f}%')
 
     plt.xlabel('Coordenada X')
     plt.ylabel('Coordenada Z')
