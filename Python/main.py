@@ -1,4 +1,5 @@
 import random
+import json
 
 from time import sleep
 
@@ -9,6 +10,7 @@ import numpy as np
 
 foto_com_microplastico: str = "Com Microplásticos"
 foto_sem_microplastico: str = "Sem Microplástico"
+delay_tarefas = 5
 
 
 def main():
@@ -35,26 +37,45 @@ def main():
 def pegar_coordenadas() -> list:
     coordenadas: list = []
 
-    print('Digite a coordenada desejada: [X,Z]')
+    usar_banco_de_dados = False
     while True:
-        coord_x: float = pegar_coordenada('x')
-        coord_z: float = pegar_coordenada('z')
+        resposta = input('Deseja digitar as coordenadas manualmente? [S/N]').strip()
 
-        coordenada: tuple = (coord_x, coord_z)
-
-        if coordenadas.__contains__(coordenada):
-            print_vermelho('Coordenada já registrada. Por favor insira uma nova.')
+        if resposta == '':
             continue
-        else:
-            coordenadas.append(coordenada)
-
-        print_verde('Coordenada registrada com sucesso!')
-        print()
-
-        if pegar_mais_coordenadas():
-            continue
-        else:
+        elif resposta in 'Ss':
+            usar_banco_de_dados = False
             break
+        elif resposta in 'Nn':
+            usar_banco_de_dados = True
+            break
+        else:
+            print_vermelho('Por favor responda apenas com Ss ou Nn')
+            continue
+
+    if not usar_banco_de_dados:
+        print('Digite a coordenada desejada: [X,Z]')
+        while True:
+            coord_x: float = pegar_coordenada('x')
+            coord_z: float = pegar_coordenada('z')
+
+            coordenada: tuple = (coord_x, coord_z)
+
+            if coordenadas.__contains__(coordenada):
+                print_vermelho('Coordenada já registrada. Por favor insira uma nova.')
+                continue
+            else:
+                coordenadas.append(coordenada)
+
+            print_verde('Coordenada registrada com sucesso!')
+            print()
+
+            if pegar_mais_coordenadas():
+                continue
+            else:
+                break
+    else:
+        coordenadas = pegar_coordenadas_do_banco_de_dados('coordinates.json')
 
     return coordenadas
 
@@ -99,6 +120,13 @@ def pegar_mais_coordenadas() -> bool:
     return False
 
 
+def pegar_coordenadas_do_banco_de_dados(file_path: str) -> json:
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+        coordenadas = [tuple(coord) for coord in data["coordinates"]]
+    return coordenadas
+
+
 def pegar_raio_de_analise() -> int:
     while True:
         raio: str = input("Digite o raio de analise do drone em metros: ")
@@ -115,7 +143,7 @@ def pegar_raio_de_analise() -> int:
 
 def ir_ate_coordenada(coordenada: tuple) -> None:
     print(f'Indo até a coordenada {coordenada}...')
-    sleep(5)
+    sleep(delay_tarefas)
     print_verde('Coordenada alcançada com sucesso')
     print()
 
@@ -130,17 +158,17 @@ def fazer_varredura(raio: int) -> str:
 
 def tirar_fotos(qtd: int) -> str:
     print(f'Tirando {qtd} fotos...')
-    sleep(5)
+    sleep(delay_tarefas)
     print_verde('Fotos tiradas com sucesso')
-    return foto_com_microplastico
+    return foto_sem_microplastico if random.randint(0, 1) == 0 else foto_com_microplastico
 
 
 def coletar_amostra() -> str:
     print('Coletando amostra')
-    sleep(5)
+    sleep(delay_tarefas)
     print_verde("Amostra coletada com sucesso")
     print()
-    return foto_sem_microplastico if random.randint(0, 1) == 0 else foto_com_microplastico
+    return foto_com_microplastico
 
 
 def pegar_porcentagem_de_microplastico(amostra: str) -> float:
