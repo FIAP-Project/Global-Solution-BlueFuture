@@ -3,6 +3,8 @@ import random
 from time import sleep
 
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+import matplotlib.cm as cm
 
 foto_com_microplastico: str = "Com Microplásticos"
 foto_sem_microplastico: str = "Sem Microplástico"
@@ -26,7 +28,7 @@ def main():
 
     if len(coord_para_qtd_microplastico) > 0:
         print(coord_para_qtd_microplastico)
-        criar_grafico(coord_para_qtd_microplastico)
+        criar_grafico(coord_para_qtd_microplastico, raio)
 
 
 def pegar_coordenadas() -> list:
@@ -160,19 +162,33 @@ def numero_inteiro_valido(num_str: str) -> bool:
         return False
 
 
-def criar_grafico(coord_para_qtd_microplastico: dict) -> None:
-    coordenadas = list(coord_para_qtd_microplastico.keys())
-    porcentagens = list(coord_para_qtd_microplastico.values())
+def criar_grafico(coord_para_qtd_microplastico: dict, raio_de_analise, tamanho_maximo=1000) -> None:
+    fig, ax = plt.subplots(figsize=(10, 10))
+    ax.set_facecolor('blue')
 
-    labels: list = [f"({x}, {y})" for x, y in coordenadas]
+    ax.set_xlim(0, tamanho_maximo)
+    ax.set_ylim(0, tamanho_maximo)
 
-    plt.figure(figsize=(10, 6))
-    plt.bar(labels, porcentagens, color='skyblue')
+    ax.set_aspect('equal')
 
-    plt.xlabel('Coordenadas (x, y)')
-    plt.ylabel('Porcentagem de microplásticos')
-    plt.title('Microplásticos distribuídos por area')
+    norm = mcolors.Normalize(vmin=0, vmax=100)
+    colormap = plt.cm.RdYlBu_r
 
+    raio_circulo = raio_de_analise
+
+    for (x, z), porcentagem in coord_para_qtd_microplastico.items():
+        cor = colormap(norm(porcentagem))
+        ax.plot(x, z, 'ro')
+        circle = plt.Circle((x, z), raio_circulo, color=cor, alpha=0.75)
+        ax.add_artist(circle)
+
+    sm = cm.ScalarMappable(cmap=colormap, norm=norm)
+    cbar = plt.colorbar(sm, ax=ax)
+    cbar.set_label('Porcentagem de microplástico')
+
+    plt.xlabel('Coordenada X')
+    plt.ylabel('Coordenada Z')
+    plt.title('Mapa de Calor de Microplásticos')
     plt.show()
 
 
