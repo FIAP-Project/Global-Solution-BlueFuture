@@ -70,7 +70,11 @@ def pegar_coordenada(xz: str) -> float:
 
 def coordenada_valida(num_str: str) -> bool:
     try:
-        float(num_str)
+        f = float(num_str)
+        if f >= 1000:
+            print_vermelho('Por favor digite uma coordenada menor do que 1000')
+            return False
+
         return True
     except ValueError:
         print_vermelho('Erro, digite novamente sem letras e com ponto (.) ao invés de vírgula (,)...')
