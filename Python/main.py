@@ -140,7 +140,7 @@ def coletar_amostra() -> str:
     sleep(5)
     print_verde("Amostra coletada com sucesso")
     print()
-    return foto_com_microplastico
+    return foto_sem_microplastico if random.randint(0, 1) == 0 else foto_com_microplastico
 
 
 def pegar_porcentagem_de_microplastico(amostra: str) -> float:
