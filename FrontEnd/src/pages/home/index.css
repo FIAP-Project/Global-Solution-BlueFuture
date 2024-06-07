@@ -1,5 +1,5 @@
 body {
-    max-width: 1920px;
+    max-width: 120rem; /* 1920px */
     scroll-behavior: smooth;
     margin: 0 auto;
 }
@@ -8,45 +8,51 @@ body {
 header {
     position: relative;
     background: url('/FrontEnd/public/assets/images/header_background.jpg') no-repeat center center/cover;
-    padding: 35px 120px;
+    padding: 2.1875rem 7.5rem; /* 35px 120px */
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 960px;
+    min-height: 60rem; /* 960px */
 }
 
-header > div {
+.header-text-image {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.header-text {
+    max-width: 100%;
 }
 
 header h1 {
+    word-break: break-all;
     font-family: 'BrushScript';
     font-size: 8rem;
 }
 
 header p {
     font-size: 1.5rem;
-    max-width: 700px;
-    margin: 24px 0 64px 0;
+    max-width: 43.75rem; /* 700px */
+    margin: 1.5rem 0 4rem 0; /* 24px 0 64px 0 */
 }
 
 header img {
-    max-width: 770px;
-    max-height: 380px;
+    max-width: 48.125rem; /* 770px */
+    max-height: 23.75rem; /* 380px */
     transform: scaleX(-1);
 }
 
 .saiba-mais-btn {
     color: white;
     background-color: transparent;
-    border: 4px solid white;
-    border-radius: 10px;
-    padding: 24px 101px;
+    border: 0.25rem solid white; /* 4px */
+    border-radius: 0.625rem; /* 10px */
+    padding: 1.5rem 6.3125rem; /* 24px 101px */
     font-size: 1.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -60,15 +66,15 @@ nav {
     position: absolute;
     top: 0;
     width: 100%;
-    padding: 35px 0;
+    padding: 2.1875rem 0; /* 35px 0 */
     font-weight: bold;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem black; /* 1px 1px 2px */
 }
 
 nav ul {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 0.9375rem; /* 15px */
     list-style: none;
 }
 
@@ -84,46 +90,48 @@ nav ul li a:hover {
 }
 
 nav ul li .line {
-    width: 2px;
-    height: 25px;
+    width: 0.125rem; /* 2px */
+    height: 1.5625rem; /* 25px */
     background-color: white;
 }
 
 /* main */
 main h2 {
+    word-wrap: break-word;
     font-size: 4.5rem;
     font-weight: bold;
 }
 
 main h3 {
-    font-size: 2.0rem;
+    font-size: 2rem;
 }
 
 /* Problem Section */
 .problem-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 48px;
-    padding: 0px 120px;
-    margin: 120px 0;
+    gap: 3rem; /* 48px */
+    padding: 0 7.5rem; /* 0 120px */
+    margin: 7.5rem 0; /* 120px 0 */
 }
 
 .problem-section h2 {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem; /* 24px */
 }
 
 .problem-section p {
     font-size: 1.5rem;
-    max-width: 816px;
+    max-width: 51rem; /* 816px */
     color: #666;
 }
 
 .carousel {
     position: relative;
-    width: 50%;
-    height: 600px;
-    border-radius: 50px;
+    max-width: 42.9375rem; /* 687px */
+    height: 37.5rem; /* 600px */
+    border-radius: 3.125rem; /* 50px */
     overflow: hidden;
 }
 
@@ -137,7 +145,7 @@ main h3 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50px;
+    border-radius: 3.125rem; /* 50px */
 }
 
 .carousel-item {
@@ -150,70 +158,81 @@ main h3 {
     transform: translateY(-50%);
     background-color: transparent;
     color: white;
-    font-size: 25px;
+    font-size: 1.5625rem; /* 25px */
     border: none;
-    padding: 10px;
+    padding: 0.625rem; /* 10px */
     cursor: pointer;
 }
 
 .carousel-control.prev {
-    left: 10px;
+    left: 0.625rem; /* 10px */
 }
 
 .carousel-control.next {
-    right: 10px;
+    right: 0.625rem; /* 10px */
 }
 
 /* Technology Section */
 .technology-section {
     position: relative;
     background: url('/FrontEnd/public/assets/images/blue_background.jpg') no-repeat center center/cover;
-    padding: 120px;
+    padding: 7.5rem; /* 120px */
 }
 
 .technology-section h2 {
     color: white;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem; /* 24px */
 }
 
 .technology-section .subtitle {
     color: #99c2dc;
     font-size: 1.5rem;
-    margin-bottom: 43px;
-    max-width: 800px;
+    margin-bottom: 2.6875rem; /* 43px */
+    max-width: 50rem; /* 800px */
 }
 
 .technologies {
     display: flex;
     flex-direction: column;
-    gap: 4px
+    gap: 0.25rem; /* 4px */
 }
 
 .technology {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 24px;
+    padding: 1.5rem; /* 24px */
     background-color: white;
-    border-radius: 10px;
+    border-radius: 0.625rem; /* 10px */
 }
 
 .technologies .minor-box {
     display: flex;
-    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
     align-self: center;
+    gap: 0.25rem; /* 4px */
+}
+
+.minor {
+    max-width: 21.3125rem; /* 341px */
+}
+
+.greater {
+    max-width: 38.125rem; /* 610px */
 }
 
 .technology p {
     font-size: 1.5rem;
     color: #666;
-    margin-top: 12px;
+    margin-top: 0.75rem; /* 12px */
 }
 
 .technologies .greater-box {
     display: flex;
-    gap: 4px;
-    width: 1200px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem; /* 4px */
     align-self: center;
 }
 
@@ -224,11 +243,12 @@ main h3 {
 /* Goals Section */
 .goals-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 48px;
-    padding: 0px 120px;
-    margin: 120px 0;
+    gap: 3rem; /* 48px */
+    padding: 0 7.5rem; /* 0 120px */
+    margin: 7.5rem 0; /* 120px 0 */
 }
 
 .goals-div {
@@ -237,23 +257,26 @@ main h3 {
 
 .goals {
     display: flex;
-    gap: 24px;
-    margin: 24px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem; /* 24px */
+    margin: 1.5rem 0; /* 24px 0 */
 }
 
 .goal {
     font-size: 1.5rem;
+    max-width: 23.75rem; /* 380px */
 }
 
 .participe-btn {
     background-color: transparent;
-    border: 4px solid black;
-    border-radius: 10px;
+    border: 0.25rem solid black; /* 4px */
+    border-radius: 0.625rem; /* 10px */
     font-size: 1.5rem;
     font-weight: bold;
-    padding: 24px 0;
+    padding: 1.5rem 0; /* 24px 0 */
     width: 100%;
-    margin-top: 40px;
+    margin-top: 2.5rem; /* 40px */
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -267,24 +290,27 @@ main h3 {
 .public-section {
     position: relative;
     background: url('/FrontEnd/public/assets/images/blue_background.jpg') no-repeat center center/cover;
-    padding: 120px;
+    padding: 7.5rem; /* 120px */
 }
 
 .public-section h2 {
     color: white;
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem; /* 12px */
 }
 
 .public-section .subtitle {
     color: #99c2dc;
     font-size: 1.5rem;
-    margin-bottom: 43px;
-    max-width: 800px;
+    margin-bottom: 2.6875rem; /* 43px */
+    max-width: 50rem; /* 800px */
 }
 
 .public-section .cards {
     display: flex;
-    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem; /* 12px */
 }
 
 .public-section .card {
@@ -292,66 +318,67 @@ main h3 {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    max-width: 411px;
-    max-height: 606px;
-    border-radius: 20px;
+    max-width: 21.4375rem; /* 343px */
+    max-height: 37.875rem; /* 606px */
+    border-radius: 1.25rem; /* 20px */
     background-color: #f8f8f8;
-    padding: 20px 20px 40px 20px;
+    padding: 1.25rem 1.25rem 2.5rem 1.25rem; /* 20px 20px 40px 20px */
 }
 
 .public-section img {
-    width: 350px;
-    height: 300px;
+    max-width: 21.875rem; /* 350px */
+    height: 18.75rem; /* 300px */
     background-color: white;
-    border-radius: 20px;
-    margin-bottom: 24px;
+    border-radius: 1.25rem; /* 20px */
+    margin-bottom: 1.5rem; /* 24px */
 }
 
 .public-section h4 {
     font-size: 1.6rem;
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem; /* 12px */
 }
-
 
 .public-section p {
     font-size: 1.25rem;
-    height: 175px;
+    height: 10.9375rem; /* 175px */
 }
 
 /* Benefits Section */
 
 .benefits-section {
-    padding: 120px;
+    padding: 7.5rem; /* 120px */
 }
 
 .benefits-section h2 {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem; /* 24px */
 }
 
-.benefits-section .subtitle{
+.benefits-section .subtitle {
     font-size: 1.5rem;
-    max-width: 810px;
+    max-width: 50.625rem; /* 810px */
     color: #666;
-    margin-bottom: 48px;
+    margin-bottom: 3rem; /* 48px */
 }
 
 .benefits {
     display: flex;
-    gap: 4px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.25rem; /* 4px */
 }
 
 .benefit {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 557px;
+    max-width: 29.5rem; /* 472px */
     background-color: #F8F8F8;
-    border-radius: 10px;
-    padding: 24px;
+    border-radius: 0.625rem; /* 10px */
+    padding: 1.5rem; /* 24px */
 }
 
 .benefit p {
-    margin-top: 12px;
+    margin-top: 0.75rem; /* 12px */
     font-size: 1.5rem;
 }
 
@@ -360,42 +387,43 @@ main h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 48px;
+    flex-wrap: wrap;
+    gap: 3rem; /* 48px */
     position: relative;
     background: url('/FrontEnd/public/assets/images/blue_background.jpg') no-repeat center center/cover;
-    padding: 120px;
+    padding: 7.5rem; /* 120px */
 }
 
 .daily-impact-section h2 {
     color: white;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem; /* 24px */
 }
 
 .daily-impact-section p {
     color: #99c2dc;
     font-size: 1.5rem;
-    max-width: 835px;
+    max-width: 52.1875rem; /* 835px */
 }
 
 /* FAQ */
 
 .faq {
-    padding: 120px;
+    padding: 7.5rem; /* 120px */
 }
 
 .faq h2 {
-    margin-bottom: 48px;
+    margin-bottom: 3rem; /* 48px */
 }
 
 .faq .cards {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0.75rem; /* 12px */
 }
 
 .faq .card {
-    border: 3px solid #F8F8F8;
-    border-radius: 10px;
+    border: 0.1875rem solid #F8F8F8; /* 3px */
+    border-radius: 0.625rem; /* 10px */
     overflow: hidden;
 }
 
@@ -404,7 +432,7 @@ main h3 {
     justify-content: space-between;
     align-items: center;
     font-size: 2.3rem;
-    padding: 32px;
+    padding: 2rem; /* 32px */
     background-color: #F8F8F8;
     cursor: pointer;
 }
@@ -417,8 +445,8 @@ main h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 64px;
-    height: 64px;
+    width: 4rem; /* 64px */
+    height: 4rem; /* 64px */
     background-color: black;
     border-radius: 50%;
 }
@@ -431,7 +459,7 @@ main h3 {
 
 .answer {
     font-size: 1.5rem;
-    padding: 32px;
+    padding: 2rem; /* 32px */
     display: none;
     animation: slideDown 0.3s forwards;
 }
@@ -451,7 +479,7 @@ main h3 {
 footer {
     position: relative;
     background: url('/FrontEnd/public/assets/images/blue_background.jpg') no-repeat center center/cover;
-    padding: 120px 120px 0 120px;
+    padding: 7.5rem 7.5rem 0 7.5rem; /* 120px 120px 0 120px */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -462,18 +490,20 @@ footer {
 .social-media {
     display: flex;
     justify-content: center;
-    gap: 41px;
-    margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 2.5625rem; /* 41px */
+    margin-bottom: 3.125rem; /* 50px */
 }
 
 .social-media img {
-    width: 100px;
+    width: 6.25rem; /* 100px */
 }
 
 .other-sections {
     display: flex;
     justify-content: center;
-    gap: 41px;
+    flex-wrap: wrap;
+    gap: 2.5625rem; /* 41px */
 }
 
 .other-sections a {
@@ -486,8 +516,8 @@ footer {
 footer p {
     font-size: 2.5rem;
     color: white;
-    margin-top: 84px;
-    margin-bottom: 20px;
+    margin-top: 5.25rem; /* 84px */
+    margin-bottom: 1.25rem; /* 20px */
 }
 
 /* Popup */
@@ -506,11 +536,11 @@ footer p {
 .popup-content {
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
+    padding: 1.25rem; /* 20px */
+    border: 0.0625rem solid #888; /* 1px */
     width: 80%;
-    max-width: 550px;
-    border-radius: 10px;
+    max-width: 34.375rem; /* 550px */
+    border-radius: 0.625rem; /* 10px */
     position: relative;
 }
 
@@ -520,10 +550,10 @@ footer p {
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 25px;
+    top: 0.625rem; /* 10px */
+    right: 1.5625rem; /* 25px */
     color: #aaa;
-    font-size: 28px;
+    font-size: 1.75rem; /* 28px */
     font-weight: bold;
 }
 
@@ -540,22 +570,22 @@ form {
 }
 
 label {
-    margin: 10px 0 5px;
+    margin: 0.625rem 0 0.3125rem; /* 10px 0 5px */
 }
 
 input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.625rem; /* 10px */
+    margin-bottom: 0.9375rem; /* 15px */
+    border: 0.0625rem solid #ccc; /* 1px */
+    border-radius: 0.25rem; /* 4px */
 }
 
 form button[type="submit"] {
-    padding: 10px;
+    padding: 0.625rem; /* 10px */
     background-color: transparent;
     color: black;
-    border: 1px solid black;
-    border-radius: 10px;
+    border: 0.0625rem solid black; /* 1px */
+    border-radius: 0.625rem; /* 10px */
     cursor: pointer;
     font-size: 1.5rem;
     transition: background-color 0.3s ease;
@@ -568,4 +598,30 @@ form button[type="submit"]:hover {
 
 body.no-scroll {
     overflow: hidden;
+}
+
+@media (max-width: 101rem) { /* 1616px */
+    header img {
+        display: none;
+    }
+
+    header > div {
+        justify-content: center;
+    }
+
+    .saiba-mais-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 75rem) { /* 1200px */
+    header nav {
+        display: none;
+    }
+}
+
+@media (max-width: 64rem) { /* 1024px */
+    .greater {
+        max-width: 21.3125rem; /* 341px */
+    }
 }
