@@ -103,7 +103,7 @@ def pegar_raio_de_analise() -> int:
         raio: str = input("Digite o raio de analise do drone em metros: ")
 
         if numero_inteiro_valido(raio):
-            if int(raio) >= 100:
+            if int(raio) > 100:
                 print_vermelho('Por favor digite um raio de analise menor que 100 metros')
                 continue
             print()
